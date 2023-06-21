@@ -120,7 +120,7 @@ const ButtonPlayground = () => {
     <div className="playground">
       <ComponentPreview>
         {FIELDS?.map(({ show = true, ...field }) => (
-          <div className="input_wrapper">
+          <div className="input_wrapper" key={field?.name}>
             {![3, 4]?.includes(field?.input_type) && (
               show && <Form.Label>{field?.label}</Form.Label>
             )}
