@@ -1,0 +1,96 @@
+@import "styles/variables";
+
+.custom-tag-group {
+  .tags-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    .tag-wrapper {
+      width: fit-content;
+      padding: 0.4rem 1rem;
+      background: $secondary;
+      color: $primary;
+      border-radius: 4rem;
+      font-family: $poppins;
+      font-weight: 600;
+      font-size: 0.8em;
+      letter-spacing: 0.5px;
+      outline: none;
+      cursor: pointer;
+
+      .tag {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.6rem;
+        .custom-button {
+          padding: 0;
+          background: transparent;
+          margin: 0 !important;
+        }
+      }
+
+      &[aria-disabled="true"] {
+        opacity: 0.8;
+        color: $secondary-text;
+        cursor: not-allowed;
+      }
+
+      &[aria-selected="true"] {
+        background: $primary;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.custom-list-group {
+  min-width: 10rem;
+  max-height: 14rem;
+  overflow: auto;
+  outline: none !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0px 5px 24px rgba(0, 0, 0, 0.11);
+  background: #fff;
+  .list-group-item {
+    font-size: 0.8em;
+    font-weight: 500;
+    font-family: $poppins;
+    padding: 0.5rem 1rem !important;
+    border-bottom: 2px solid $border;
+    outline: none;
+    color: $secondary-text;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
+
+    &.active {
+      background-color: $primary;
+      border-color: $primary;
+    }
+  }
+
+  .list-group-section-item {
+    font-size: 0.6em;
+    font-weight: 600;
+    border-bottom: 0px;
+    color: #373f4e;
+  }
+
+  .is-focused {
+    background-color: $secondary;
+    color: $primary;
+  }
+}
+
+.custom-menu-button {
+  padding: 0.5rem;
+}
+
+::-webkit-scrollbar {
+  display: none !important;
+}

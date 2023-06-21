@@ -1,0 +1,50 @@
+@import "../../styles/variables";
+
+.markdown-container {
+  padding: 2rem;
+  color: #fff;
+  background: #161723;
+  height: 100vh;
+  overflow: auto;
+
+  code {
+    color: #00ffd0;
+    // color: #addb67;
+    // span {
+    //   &:nth-last-child(1) {
+    //      display: none !important;
+    //   }
+    // }
+  }
+
+  table {
+    width: 100% !important;
+    tbody,
+    thead {
+      width: 100% !important;
+      min-width: 100% !important;
+      max-width: 100% !important;
+
+      tr {
+        th,
+        td {
+          // text-align: center;
+        }
+      }
+    }
+  }
+
+  .component-preview {
+    padding: 2rem 1rem;
+    background: #111b27;
+    border-radius: 6px;
+
+    &.styles {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  }
+}

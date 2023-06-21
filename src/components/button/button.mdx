@@ -1,0 +1,395 @@
+import { ReactComponent as ArrowLeftIcon } from "assets/icons/arrow/arrow-left.svg";
+import { ReactComponent as UploadIcon } from "assets/icons/cloud/cloud-upload.svg";
+import { ReactComponent as TrashIcon } from "assets/icons/trash/trash-2.svg";
+import Spinner from 'react-bootstrap/Spinner';
+import { Link } from "react-router-dom";
+import Button, {variants, RButton} from "components/button/Button";
+import { exclueValuesFromListOrObject } from "helper/excludeValuesFromListOrObject";
+import ButtonPlayground from "./ButtonPlayground.jsx"
+
+
+# <Back to="/">Buttons</Back>
+
+#### Contents
+- [Simple Button](inline:button#button)
+- [Variants](inline:button#variants)
+- [Outline Buttons](inline:button#outline)
+- [Button Tags](inline:button#buttonTags)
+- [Icons](inline:button#icons)
+- [Disabled](inline:button#disabled)
+- [Loading](inline:button#loading)
+  - [Loader Position](inline:button#loaderPosition)
+  - [Custom Loader](inline:button#customLoader)
+- [Playground](inline:button#playground)
+- [API](inline:button#api)
+---
+
+<article id='button'>
+### Basic Button
+
+<Preview>
+  <Button onClick={() => alert("Button Clicked!")}>Contained</Button>
+</Preview>
+
+```js
+import Button from "components/button/Button";
+
+const ButtonExample = () => {
+  return <Button onClick={() => alert("Button Clicked!")}>Contained</Button>;
+};
+```
+</article>
+
+
+---
+
+<article id='variants'>
+### Variants
+
+Use any of the available button style types to quickly create a styled button. Just modify the variant prop.
+
+```js
+const variants = {
+  primary: "Primary",
+  secondary: "Secondary",
+  success: "Success",
+  warning: "Warning",
+  danger: "Danger",
+  info: "Info",
+  light: "Light",
+  dark: "Dark",
+  text: "Text",
+  link: "Link",
+};
+```
+
+> Note: Button has `variant='primary'` by default. Ignore if you want to use `primary` button
+
+<Preview>
+  {Object.entries(variants)?.map(([variant, label]) => (
+    <Button
+      variant={variant}
+      onClick={() => alert(`${label} Button Clicked!`)}
+    >
+      {label}
+    </Button>
+  ))}
+</Preview>
+
+```js
+import Button from "components/button/Button";
+
+const VariantsTypeExample = () => {
+  return (
+    <>
+      {Object.entries(variants)?.map(([variant, label]) => (
+        <Button
+          variant={variant}
+        >
+          {label}
+        </Button>
+      ))}
+    </>
+  );
+};
+```
+</article>
+
+---
+
+<article id='outline'>
+### Outline Buttons
+
+Pass `outline` prop to the `<Button />`
+
+> Note: Button with `outline` takes `variant='primary'` by default.
+
+<Preview>
+  {Object.entries(exclueValuesFromListOrObject(variants, ['text', 'link']))?.map(([variant, label]) => (
+    <Button
+      variant={`outline-${variant}`}
+    >
+      {label}
+    </Button>
+  ))}
+</Preview>
+
+```js
+import Button from 'react-bootstrap/Button';
+
+function OutlineTypesExample() {
+  return (
+    <>
+      {Object.entries(exclueValuesFromListOrObject(variants, ['text', 'link']))?.map(([variant, label]) => (
+        <Button
+          variant={`outline-${variant}`}
+        >
+          {label}
+        </Button>
+      ))}
+    </>
+  );
+}
+
+export default OutlineTypesExample;
+```
+</article>
+
+
+---
+
+
+<article id='buttonTags'>
+### Button Tags
+
+You can use the `as` prop to render the tag inplace of button.
+
+<Preview>
+  <Button href="#">Link</Button> <Button type="submit">Button</Button>
+  <Button as="input" type="button" value="Input" />
+  <Button as="input" type="submit" value="Submit" />
+  <Button as="input" type="reset" value="Reset" />
+</Preview>
+
+```js
+<Button href="#">Link</Button> <Button type="submit">Button</Button>
+<Button as="input" type="button" value="Input" />
+<Button as="input" type="submit" value="Submit" />
+<Button as="input" type="reset" value="Reset" />
+```
+</article>
+
+
+---
+
+
+<article id='sizes'>
+### Sizes
+
+<Preview>
+  <Button variant="primary" size="lg">Large button</Button>
+  <Button variant="secondary" size="lg">Large button</Button>
+  <Button variant="primary" size="sm">Small button</Button>
+  <Button variant="secondary" size="sm">Small button</Button>
+</Preview>
+
+```js
+<Button variant="primary" size="lg">Large button</Button>
+<Button variant="secondary" size="lg">Large button</Button>
+<Button variant="primary" size="sm">Small button</Button>
+<Button variant="secondary" size="sm">Small button</Button>
+```
+
+<Preview resetStyles>
+<div className="d-grid gap-2">
+  <Button variant="primary" size="lg">Block level button</Button>
+  <Button variant="secondary" size="lg">Block level button</Button>
+</div>
+</Preview>
+
+</article>
+
+
+---
+
+
+
+<article id='icons'>
+### Icons
+
+The `startIcon` and `endIcon` props helps to insert your icons inside the `<Button/>` 
+
+<Preview>
+<Button startIcon={<TrashIcon />}>Delete</Button>
+<Button endIcon={<UploadIcon />}>Upload</Button>
+</Preview>
+
+```js
+import Button from "components/button/Button";
+
+import {ReactComponent as TrashIcon} from "your-assets/trash.svg";
+import {ReactComponent as UploadIcon} from "your-assets/upload.svg";
+
+const ButtonIconsExample = () => {
+  return (
+    <>
+      <Button startIcon={<TrashIcon />}>Delete</Button>
+      <Button endIcon={<UploadIcon />}>Upload</Button>
+    </>
+  )
+}
+```
+
+> Note: You can also pass `Icons` as children to the `Button` like this 
+
+```js
+<Button>
+    <UploadIcon /> Upload 
+</Button>
+```
+</article>
+
+---
+
+
+<article id='disabled'>
+### Disabled
+
+Make buttons look inactive by adding the `isDisabled` prop.
+
+<Preview>
+  <Button isDisabled>Primary</Button>
+  <Button isDisabled variant="secondary">Secondary</Button>
+  <Button isDisabled variant="outline">Outlined</Button>
+</Preview>
+
+```js
+import Button from "components/button/Button";
+
+const DisabledButtonsExample = () => {
+  return (
+    <>
+      {Object.entries({
+        primary: "Primary",
+        secondary: "Secondary",
+        outline: "Outlined",
+      })?.map(([variant, label]) => (
+        <Button isDisabled variant={variant}>
+          {label}
+        </Button>
+      ))}
+    </>
+  );
+};
+```
+</article>
+
+---
+
+
+<article id='loading'>
+### Loading State
+
+When activating an asynchronous action from a button it is a good UX pattern to give the user feedback as to the loading state, this can easily be done by adding `isLoading` prop to `<Button />`.
+
+<Preview>
+  <Button isLoading>Primary</Button>
+  <Button isLoading variant="secondary">Secondary</Button>
+  <Button isLoading variant="outline">Outlined</Button>
+</Preview>
+
+```js
+import Button from "components/button/Button";
+
+const ButtonLoadingExample = () => {
+  return (
+    <>
+      {Object.entries({
+        primary: "Primary",
+        secondary: "Secondary",
+        outline: "Outline",
+      })?.map(([variant, label]) => (
+        <Button isLoading variant={variant}>
+          {label}
+        </Button>
+      ))}
+    </>
+  );
+};
+```
+</article>
+
+
+
+
+<article id="loaderPosition">
+#### Loader Position
+
+The loading icon can be placed at the `start` | `end` position using the `loaderPosition` prop.
+
+> Note: By default `loaderPosition` `=` `'start'`.
+
+<Preview>
+<Button isLoading loaderPosition='start'>Save</Button>
+<Button isLoading loaderPosition='end'>Save</Button>
+</Preview>
+
+```js
+<Button isLoading loaderPosition='start'>Save</Button>
+<Button isLoading loaderPosition='end'>Save</Button>
+```
+</article>
+
+
+<article id='customLoader'>
+#### Custom Loader
+
+The loading icon can be  replaced with `loader` prop.
+
+<Preview>
+<Button isLoading loader={<Spinner animation='grow' size='sm' />}> Loading</Button>
+</Preview>
+
+```js
+import Button from "components/button/Button";
+import Spinner from 'react-bootstrap/Spinner';
+
+const CustomLoaderExample = () => {
+  return (
+    <Button 
+      isLoading
+      loader={<Spinner animation='grow' size='sm' />}
+    >
+      Loading
+    </Button>
+  )
+}
+```
+</article>
+
+---
+
+
+<article id='playground'>
+
+## Playground
+
+<ButtonPlayground />
+
+</article>
+
+
+---
+
+
+
+<article id='api'>
+
+## API
+
+### Button
+
+```js
+import Button from "components/button/Button";
+```
+
+| Name               | Type               | Default   | Description |
+|--------------------|--------------------|-----------|-------------|
+| variant | string | `'primary'` | One or more button variant combinations buttons may be one of a variety of visual variants such as: <br /> `'primary', 'secondary', 'outline'` |
+| isDisabled | bool | `false` | 
+| as | elementType |  | You can use a custom element type for this component.
+| size | string | `sm`, `lg` | Specifies a large or small button.
+| href | 
+| value | string | 
+| loader
+| endIcon
+| startIcon
+| className | string | 
+| isLoader | bool | `false` | Specifies whether to show the loading spinner or not.
+| loadingIndicator | | Specifies the loading text 
+| isLoading | bool | `false` | Specifies whether to show the loading state or not.
+| loaderPosition | string | `'start'` | Specifies the position of loader. Accepts `'start'`, `'end'`
+| isDisabled | bool | `false` | Disables the Button, preventing mouse events.
+
+
+</article>

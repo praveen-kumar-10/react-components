@@ -1,0 +1,34 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.field {
+  display: inline-flex;
+  padding: 2px 4px;
+  border-radius: 2px;
+  border: 1px solid var(--gray);
+  background: var(--spectrum-global-color-gray-50);
+}
+
+.field:focus-within {
+  border-color: var(--blue);
+}
+
+.segment {
+  padding: 0 2px;
+  font-variant-numeric: tabular-nums;
+  text-align: end;
+}
+
+.segment.placeholder {
+  color: var(--react-spectrum-datepicker-placeholder-color);
+}
+
+.segment:focus {
+  color: white;
+  background: var(--blue);
+  outline: none;
+  border-radius: 2px;
+}

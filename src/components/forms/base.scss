@@ -1,0 +1,107 @@
+@import "styles/_variables.scss";
+
+.custom-text-field {
+  width: fit-content;
+
+  .form-control {
+    outline: none;
+    box-shadow: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    padding: 0.5rem 1rem;
+    border: 1px solid #e8e8eb;
+    border-radius: 6px;
+    font-family: $poppins;
+    font-weight: 600;
+    font-size: 13px;
+
+    background-size: 16px 14px;
+    &.is-valid {
+      background-image: url("../../assets/icons/checkmark/checkmark-circle.svg") !important;
+    }
+
+    // &.is-invalid {
+    //   background-image: url("../../assets/icons/checkmark/checkmark-circle.svg") !important;
+    // }
+
+    &:focus {
+      border: 1px solid $primary;
+    }
+  }
+}
+
+.custom-form-check {
+  margin-bottom: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem;
+
+  input[type="checkbox"],
+  label {
+    cursor: pointer;
+  }
+
+  .form-check-label {
+    font-family: $poppins;
+    font-weight: 500;
+    font-size: 0.8em;
+    color: #4a5568;
+    line-height: 0 !important;
+  }
+
+  .form-check-input {
+    font-family: $poppins;
+    box-shadow: none !important;
+    margin: 0;
+
+    &[type="radio"] {
+      &:checked {
+        background-image: url("../../assets/radio/RadioInnerCircle.svg");
+        background-color: #fff;
+        border-color: $primary;
+      }
+    }
+
+    &[type="checkbox"] {
+      box-shadow: none !important;
+
+      &.is-valid:checked {
+        background-color: #198754;
+        border-color: #198754;
+      }
+
+      &.is-invalid:checked {
+        background-color: #dc3545;
+        border-color: #dc3545;
+      }
+
+      &:indeterminate {
+        background-color: rgb(188, 197, 230);
+        border-color: rgb(241, 241, 255);
+      }
+
+      &:checked {
+        background-color: $primary;
+        border-color: $primary;
+      }
+
+      &:disabled {
+        cursor: default;
+      }
+    }
+  }
+}
+
+.custom-radio-group {
+  .radio-options-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    .custom-form-check {
+      width: fit-content;
+    }
+  }
+}

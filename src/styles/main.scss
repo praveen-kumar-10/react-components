@@ -1,0 +1,66 @@
+@import "./font";
+@import "./variables";
+@import "./markdown/markdown";
+// @import "./markdown/markdown-light";
+// @import "./markdown/markdown-dark";
+
+:root {
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --poppins: "Poppins", sans-serif;
+  --inter: "Inter", sans-serif;
+  --lato: "Lato", sans-serif;
+  --allura: "Allura", cursive;
+  --handlee: "Handlee", cursive;
+  --kristi: "Kristi", cursive;
+  --aurore: "La Belle Aurore", cursive;
+  --reenie: "Reenie Beanie", cursive;
+  --satisfy: "Satisfy", cursive;
+  --shadows: "Shadows Into Light Two", cursive;
+  --zeyada: "Zeyada", cursive;
+
+  --bs-border-width: 1.5px;
+
+  --primary: #061bb0;
+  --secondary: #f3f5ff;
+  --white: #fff;
+  --border: #f4f4f4;
+
+  --primary-text: #061bb0;
+  --secondary-text: #4a5568;
+}
+
+.form-label {
+  font-family: $poppins;
+  font-weight: 500;
+  font-size: 0.8em;
+  color: #4a5568;
+  margin-bottom: 0.2rem;
+}
+
+#root {
+  width: 100%;
+  // height: 100dvh;
+  // padding: 2rem;
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 0.3rem !important;
+    height: 0.4rem !important;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    border-radius: 0.5rem;
+    background: #1b2a3c !important;
+  }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #283d56 !important;
+  }
+}
