@@ -1,0 +1,43 @@
+
+- [Button Tags](inline:button#buttonTags)
+
+<article id='buttonTags'>
+### Button Tags
+
+You can use the `as` prop to render the tag inplace of button.
+
+<Preview>
+  <Button href="#">Link</Button> <Button type="submit">Button</Button>
+  <Button as="input" type="button" value="Input" />
+  <Button as="input" type="submit" value="Submit" />
+  <Button as="input" type="reset" value="Reset" />
+</Preview>
+
+```js
+<Button href="#">Link</Button> <Button type="submit">Button</Button>
+<Button as="input" type="button" value="Input" />
+<Button as="input" type="submit" value="Submit" />
+<Button as="input" type="reset" value="Reset" />
+```
+</article>
+
+
+---
+
+
+
+<article id='blockButtons'>
+### Custom Button Widths
+
+<Preview resetStyles>
+  <div className='d-grid gap-4'>
+  <Button variant="primary" className="w-50">Block level button</Button>
+  <Button variant="primary" className="w-100">Block level button</Button>
+  </div>
+</Preview>
+
+```js
+<Button variant="primary" size="lg">Block level button</Button>
+```
+
+</article>

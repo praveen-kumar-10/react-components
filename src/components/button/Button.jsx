@@ -1,14 +1,10 @@
-import { useRef } from "react";
-import { useButton } from "react-aria";
-
-import {
-  Button as BootstrapButton,
-  Spinner as BootstrapSpinner,
-} from "react-bootstrap";
+import { useRef, useMemo } from "react";
 
 import "./Button.scss";
 
 // todo: Add Tooltip
+// todo: Add Different custom Loader Animation or use 'react-spinners'
+// * refer: https://cssloaders.github.io/, https://loading.io/css/
 
 export const variants = {
   primary: "Primary",
@@ -26,43 +22,70 @@ export const variants = {
 const Button = (props) => {
   let ref = useRef();
   let {
-    as,
-    size,
-    value,
-    loader,
+    // as,
+    size = "md",
     endIcon,
     startIcon,
     className = "",
-    isLoader = true,
-    loadingIndicator,
-    isLoading = false,
     variant = "primary",
+
+    loader,
+    isLoading = false,
+    isLoader = true,
+    loaderAnimation,
+    loaderSize,
+    loadingIndicator,
     loaderPosition = "start",
-    ...useButtonProps
+
+    // todo: if useButton is used then remove isDisabled and buttonProps
+    isDisabled,
+    ...buttonProps
+    // ...useButtonProps
   } = props;
 
-  let { buttonProps } = useButton(useButtonProps, ref);
+  const buttonClassName = useMemo(() => {
+    let clsName = `btn btn-${variant} btn-${size}`;
 
-  if (as) {
-    return (
-      <BootstrapButton
-        {...{ as, className, variant, value, size }}
-        {...buttonProps}
-        style={props.style}
-        disabled={isLoading || buttonProps?.disabled}
-      />
-    );
-  }
+    clsName && (clsName += ` ${className}`);
+
+    return clsName;
+  }, [className, size, variant]);
+
+  // todo: add if want to use reat-aria-button
+  // let { buttonProps } = useButton({...useButtonProps, onPress: onClick}, ref);
+
+  // todo: add if want to replace the button with react-bootstrap-button
+  // if (as) {
+  //   return (
+  //     <button
+  //       {...{ as, className, variant, value, size }}
+  //       {...buttonProps}
+  //       style={props.style}
+  //       disabled={isLoading || buttonProps?.disabled}
+  //     />
+  //   );
+  // }
 
   return (
-    <BootstrapButton
-      {...{ className, variant, value, size }}
+    <button
       {...buttonProps}
       ref={ref}
       style={props.style}
-      disabled={isLoading || buttonProps?.disabled}
+      className={buttonClassName}
+      disabled={
+        isLoading || isDisabled
+        // todo: if using useButton - || buttonProps?.disabled
+      }
     >
-      {isLoading && isLoader && loaderPosition === "start" && <Spinner loader={loader} />}
+      {isLoading && isLoader && loaderPosition === "start" && (
+        <Spinner
+          {...{
+            loader,
+            animation: loaderAnimation,
+            size: loaderSize,
+          }}
+        />
+      )}
 
       {startIcon && startIcon}
 
@@ -72,27 +95,33 @@ const Button = (props) => {
 
       {endIcon && endIcon}
 
-      {isLoading && isLoader && loaderPosition === "end" && <Spinner loader={loader} />}
-    </BootstrapButton>
+      {isLoading && isLoader && loaderPosition === "end" && (
+        <Spinner
+          {...{
+            loader,
+            animation: loaderAnimation,
+            size: loaderSize,
+          }}
+        />
+      )}
+    </button>
   );
 };
 
 export default Button;
 
-const Spinner = ({ loader }) => {
+const Spinner = ({ loader, animation = "border", size = "sm" }) => {
   if (loader) return loader;
   return (
-    <BootstrapSpinner
-      as="span"
-      animation="border"
-      size="sm"
+    <div
+      className={`spinner-${animation} spinner-${animation}-${size}`}
       role="status"
-      aria-hidden="true"
-    />
+    >
+      <span className="visually-hidden">Loading...</span>
+    </div>
   );
 };
 
-
 export const RButton = () => {
-  return <button className="rbutton">Hello</button>
-}
+  return <button className="rbutton">Hello</button>;
+};

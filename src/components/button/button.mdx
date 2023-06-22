@@ -1,10 +1,11 @@
 import { ReactComponent as ArrowLeftIcon } from "assets/icons/arrow/arrow-left.svg";
 import { ReactComponent as UploadIcon } from "assets/icons/cloud/cloud-upload.svg";
 import { ReactComponent as TrashIcon } from "assets/icons/trash/trash-2.svg";
-import Spinner from 'react-bootstrap/Spinner';
+import { ReactComponent as CubeIcon } from "assets/icons/cube.svg";
 import { Link } from "react-router-dom";
-import Button, {variants, RButton} from "components/button/Button";
+import Spinner from 'react-bootstrap/Spinner';
 import { exclueValuesFromListOrObject } from "helper/excludeValuesFromListOrObject";
+import Button, {variants, RButton} from "components/button/Button";
 import ButtonPlayground from "./ButtonPlayground.jsx"
 
 
@@ -14,11 +15,13 @@ import ButtonPlayground from "./ButtonPlayground.jsx"
 - [Simple Button](inline:button#button)
 - [Variants](inline:button#variants)
 - [Outline Buttons](inline:button#outline)
-- [Button Tags](inline:button#buttonTags)
 - [Icons](inline:button#icons)
 - [Disabled](inline:button#disabled)
 - [Loading](inline:button#loading)
   - [Loader Position](inline:button#loaderPosition)
+  - [Loader Animation](inline:button#loaderAnimation)
+  - [Loading Indicator](inline:button#loadingIndicator)
+  - [Hide Default Loader](inline:button#isLoader)
   - [Custom Loader](inline:button#customLoader)
 - [Playground](inline:button#playground)
 - [API](inline:button#api)
@@ -139,56 +142,23 @@ export default OutlineTypesExample;
 ---
 
 
-<article id='buttonTags'>
-### Button Tags
-
-You can use the `as` prop to render the tag inplace of button.
-
-<Preview>
-  <Button href="#">Link</Button> <Button type="submit">Button</Button>
-  <Button as="input" type="button" value="Input" />
-  <Button as="input" type="submit" value="Submit" />
-  <Button as="input" type="reset" value="Reset" />
-</Preview>
-
-```js
-<Button href="#">Link</Button> <Button type="submit">Button</Button>
-<Button as="input" type="button" value="Input" />
-<Button as="input" type="submit" value="Submit" />
-<Button as="input" type="reset" value="Reset" />
-```
-</article>
-
-
----
-
-
 <article id='sizes'>
 ### Sizes
 
+Sizes = `'sm'` | `'md'` | `'lg'`
+
 <Preview>
-  <Button variant="primary" size="lg">Large button</Button>
-  <Button variant="secondary" size="lg">Large button</Button>
-  <Button variant="primary" size="sm">Small button</Button>
-  <Button variant="secondary" size="sm">Small button</Button>
+  <Button size="sm">Small button</Button>
+  <Button size="md">Medium button</Button>
+  <Button size="lg">Large button</Button>
 </Preview>
 
 ```js
-<Button variant="primary" size="lg">Large button</Button>
-<Button variant="secondary" size="lg">Large button</Button>
-<Button variant="primary" size="sm">Small button</Button>
-<Button variant="secondary" size="sm">Small button</Button>
+<Button size="sm">Small button</Button>
+<Button size="md">Small button</Button>
+<Button size="lg">Large button</Button>
 ```
-
-<Preview resetStyles>
-<div className="d-grid gap-2">
-  <Button variant="primary" size="lg">Block level button</Button>
-  <Button variant="secondary" size="lg">Block level button</Button>
-</div>
-</Preview>
-
 </article>
-
 
 ---
 
@@ -303,7 +273,7 @@ const ButtonLoadingExample = () => {
 
 
 <article id="loaderPosition">
-#### Loader Position
+### Loader Position
 
 The loading icon can be placed at the `start` | `end` position using the `loaderPosition` prop.
 
@@ -321,24 +291,79 @@ The loading icon can be placed at the `start` | `end` position using the `loader
 </article>
 
 
+<article id='loaderAnimation'>
+### Loader Animation
+
+The `loaderAnimation` prop alow to change the type of animation for the loader.
+
+Supports: `'border'` | `'grow'`
+
+> Note: By default `loaderPosition` `=` `'border'`.
+
+<Preview>
+<Button isLoading loaderAnimation='border'>Border</Button>
+<Button isLoading loaderAnimation='grow'>Grow</Button>
+</Preview>
+
+```js
+<Button isLoading loaderAnimation='border'>Border</Button>
+<Button isLoading loaderAnimation='grow'>Grow</Button>
+```
+</article>
+
+
+<article id='loadingIndicator'>
+### Loading Indicator
+
+The `loadingIndicator` allow you to replace the button children while loading.
+
+<Preview>
+<Button isLoading loadingIndicator='Loading...'>Button</Button>
+</Preview>
+
+```js
+<Button isLoading loadingIndicator='Loading...'>Button</Button>
+```
+</article>
+
+
+<article id='isLoader'>
+### Hide Default Loader
+
+The `isLoader` prop allows to toggle the visibility of the default loader or the custom loader provided via `loader`
+
+<Preview>
+<Button isLoading>Default</Button>
+<Button isLoading isLoader={false}>! isLoader</Button>
+</Preview>
+
+
+```js
+<Button isLoading isLoader={false}>Button</Button>
+```
+
+
+</article>
+
+
 <article id='customLoader'>
-#### Custom Loader
+### Custom Loader
 
 The loading icon can be  replaced with `loader` prop.
 
 <Preview>
-<Button isLoading loader={<Spinner animation='grow' size='sm' />}> Loading</Button>
+<Button isLoading loader={<CubeIcon animation='grow' size='sm' />}> Loading</Button>
 </Preview>
 
 ```js
 import Button from "components/button/Button";
-import Spinner from 'react-bootstrap/Spinner';
+import {ReactComponent as Loader} from 'your-assets/loader.svg';
 
 const CustomLoaderExample = () => {
   return (
     <Button 
       isLoading
-      loader={<Spinner animation='grow' size='sm' />}
+      loader={<Loader />}
     >
       Loading
     </Button>

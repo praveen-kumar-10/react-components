@@ -27,6 +27,8 @@ const INITIAL_STATE = {
   size: "md",
   outline: false,
   isDisabled: false,
+  loaderAnimation: "border",
+  loaderSize: "sm"
 };
 
 const ButtonPlayground = () => {
@@ -71,6 +73,7 @@ const ButtonPlayground = () => {
         name: "children",
         input_type: 1,
         label: "Text",
+        disabled: state?.loadingIndicator !== ''
       },
       {
         input_type: 4,
@@ -91,8 +94,21 @@ const ButtonPlayground = () => {
       },
       {
         input_type: 4,
+        name: "isDisabled",
+        label: "Disabled",
+      },
+      {
+        input_type: 4,
         name: "isLoading",
-        label: "isLoading",
+        label: "Loading",
+      },
+      {
+        input_type: 3,
+        name: "loaderAnimation",
+        label: "Loader Animation",
+        items: {border: "Border", grow: "Grow"},
+        show: state?.isLoading,
+
       },
       {
         input_type: 3,
@@ -107,25 +123,20 @@ const ButtonPlayground = () => {
         label: "Loading Indicator",
         show: state?.isLoading,
       },
-      {
-        input_type: 4,
-        name: "isDisabled",
-        label: "Disabled",
-      },
     ],
-    [state?.isLoading]
+    [state?.isLoading, state?.loadingIndicator]
   );
 
   return (
     <div className="playground">
-      <ComponentPreview>
+      <ComponentPreview className='form'>
         {FIELDS?.map(({ show = true, ...field }) => (
-          <div className="input_wrapper" key={field?.name}>
+          show && <div className="input_wrapper" key={field?.name}>
             {![3, 4]?.includes(field?.input_type) && (
               show && <Form.Label>{field?.label}</Form.Label>
             )}
 
-            {field?.input_type === 1 && show && (
+            {field?.input_type === 1 && (
               <Form.Control
                 {...field}
                 value={state[field?.name] ?? ""}
@@ -133,7 +144,7 @@ const ButtonPlayground = () => {
               />
             )}
 
-            {field?.input_type === 3 && show && (
+            {field?.input_type === 3 && (
               <Radio
                 {...field}
                 defaultValue={state[field?.name]}
@@ -180,11 +191,6 @@ const ButtonPlayground = () => {
           language="jsx"
           style={nightOwl}
           wrapLongLines
-          customStyle={
-            {
-              // width: "70%",
-            }
-          }
         >
           {code}
         </SyntaxHighlighter>

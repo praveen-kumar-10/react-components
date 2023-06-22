@@ -7,14 +7,55 @@
   height: 100vh;
   overflow: auto;
 
+  .table-wrapper {
+    overflow: auto;
+  }
+
+  .code-block {
+    position: relative;
+    .copy-tool {
+      position: absolute;
+      display: none;
+
+      top: 1rem;
+      right: 1rem;
+      border: 1px solid #31445b;
+      border-radius: 0.2rem;
+      padding: 0.1rem 0.4rem;
+      font-family: $poppins;
+      font-size: 0.8em;
+
+      svg {
+        width: 1.2rem;
+        height: 1.6rem;
+        path {
+          fill: #31445b;
+        }
+      }
+
+      &.copied {
+        color: rgb(173, 219, 103);
+        .check-icon {
+          path {
+            fill: rgb(173, 219, 103);
+          }
+        }
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    &:hover .copy-tool {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+  }
+
   code {
     color: #00ffd0;
-    // color: #addb67;
-    // span {
-    //   &:nth-last-child(1) {
-    //      display: none !important;
-    //   }
-    // }
   }
 
   table {
@@ -24,13 +65,6 @@
       width: 100% !important;
       min-width: 100% !important;
       max-width: 100% !important;
-
-      tr {
-        th,
-        td {
-          // text-align: center;
-        }
-      }
     }
   }
 

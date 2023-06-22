@@ -10,12 +10,29 @@ const components = {
   a: (props) => <Anchor {...props} />,
   Back: (props) => <BackBtn {...props} />,
   Preview: (props) => <ComponentPreview {...props} />,
+  table: (props) => <Table {...props} />,
+};
+
+const Table = (props) => {
+  return (
+    <div className="table-wrapper">
+      <table>{props?.children}</table>
+    </div>
+  );
 };
 
 export const ComponentPreview = (props) => {
-  console.log(props);
+  // console.log(props);
 
-  return <div className={`component-preview ${props?.resetStyles ? '' : 'styles'}`}>{props?.children}</div>;
+  return (
+    <div
+      className={`component-preview ${props?.className ?? ""} ${
+        props?.resetStyles ? "" : "styles"
+      }`}
+    >
+      {props?.children}
+    </div>
+  );
 };
 
 const BackBtn = (props) => {
@@ -32,10 +49,10 @@ const BackBtn = (props) => {
 };
 
 const Anchor = (props) => {
-  console.log("a", props);
+  // console.log("a", props);
   const { href, children } = props;
   let [type, to] = href?.split(":");
-  console.log({ type, to });
+  // console.log({ type, to });
 
   if (type === "inline") return <a href={to}>{children}</a>;
   return <Link to={to}>{children}</Link>;
