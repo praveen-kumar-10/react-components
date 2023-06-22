@@ -1,19 +1,22 @@
 {
   "files": {
-    "main.css": "/react-components/static/css/main.3b51bbe1.css",
-    "main.js": "/react-components/static/js/main.495fbc7d.js",
+    "main.css": "/react-components/static/css/main.271699da.css",
+    "main.js": "/react-components/static/js/main.a3e3e495.js",
+    "static/media/cube.svg": "/react-components/static/media/cube.09277ee299bc3bc7f72f4644fac43290.svg",
     "static/media/cloud-upload.svg": "/react-components/static/media/cloud-upload.8016b9ce1448036a4383ea8bf242b055.svg",
     "static/media/arrow-circle-left.svg": "/react-components/static/media/arrow-circle-left.080b0138f509a44607febad35b293af9.svg",
     "static/media/arrow-left.svg": "/react-components/static/media/arrow-left.187c60f5a040a8e6cbe142a0f2245f79.svg",
     "static/media/trash-2.svg": "/react-components/static/media/trash-2.7bcfa55ba72e68b8ec6094e04af64d05.svg",
     "static/media/checkmark-circle.svg": "/react-components/static/media/checkmark-circle.154fe4bc5b7ec0992169.svg",
+    "static/media/copy.svg": "/react-components/static/media/copy.4c27d52b044b76923935942140b54ede.svg",
+    "static/media/checkmark.svg": "/react-components/static/media/checkmark.5ab128a47c55a2539de35a198731193b.svg",
     "index.html": "/react-components/index.html",
     "static/media/RadioInnerCircle.svg": "/react-components/static/media/RadioInnerCircle.4f47340f3ba2110a82f6.svg",
-    "main.3b51bbe1.css.map": "/react-components/static/css/main.3b51bbe1.css.map",
-    "main.495fbc7d.js.map": "/react-components/static/js/main.495fbc7d.js.map"
+    "main.271699da.css.map": "/react-components/static/css/main.271699da.css.map",
+    "main.a3e3e495.js.map": "/react-components/static/js/main.a3e3e495.js.map"
   },
   "entrypoints": [
-    "static/css/main.3b51bbe1.css",
-    "static/js/main.495fbc7d.js"
+    "static/css/main.271699da.css",
+    "static/js/main.a3e3e495.js"
   ]
 }
