@@ -1,21 +1,22 @@
 {
   "files": {
-    "main.css": "/react-components/static/css/main.4bc0333b.css",
-    "main.js": "/react-components/static/js/main.63fe2a96.js",
-    "static/media/select-icon.svg": "/react-components/static/media/select-icon.f899271a138f76bc4df4.svg",
-    "static/media/close.svg": "/react-components/static/media/close.7a55a8131c3d6382276ee2e34758a87e.svg",
+    "main.css": "/react-components/static/css/main.049de8d1.css",
+    "main.js": "/react-components/static/js/main.b7f47fac.js",
+    "static/media/cube.svg": "/react-components/static/media/cube.09277ee299bc3bc7f72f4644fac43290.svg",
+    "static/media/cloud-upload.svg": "/react-components/static/media/cloud-upload.8016b9ce1448036a4383ea8bf242b055.svg",
+    "static/media/arrow-circle-left.svg": "/react-components/static/media/arrow-circle-left.080b0138f509a44607febad35b293af9.svg",
+    "static/media/arrow-left.svg": "/react-components/static/media/arrow-left.187c60f5a040a8e6cbe142a0f2245f79.svg",
+    "static/media/trash-2.svg": "/react-components/static/media/trash-2.7bcfa55ba72e68b8ec6094e04af64d05.svg",
     "static/media/checkmark-circle.svg": "/react-components/static/media/checkmark-circle.154fe4bc5b7ec0992169.svg",
-    "static/media/arrow-left.svg": "/react-components/static/media/arrow-left.dd4b68a8ee6094bc6fdac8d590587740.svg",
-    "static/media/arrow-right.svg": "/react-components/static/media/arrow-right.7f42801643ddfd880cc649d44089a413.svg",
-    "static/media/chevron-down.svg": "/react-components/static/media/chevron-down.9b362849f320f1e244719f404f3dcfe5.svg",
-    "static/media/more-vertical.svg": "/react-components/static/media/more-vertical.1688c3828d8eec81c6fe046869cfe4e7.svg",
+    "static/media/copy.svg": "/react-components/static/media/copy.4c27d52b044b76923935942140b54ede.svg",
+    "static/media/checkmark.svg": "/react-components/static/media/checkmark.5ab128a47c55a2539de35a198731193b.svg",
     "index.html": "/react-components/index.html",
     "static/media/RadioInnerCircle.svg": "/react-components/static/media/RadioInnerCircle.4f47340f3ba2110a82f6.svg",
-    "main.4bc0333b.css.map": "/react-components/static/css/main.4bc0333b.css.map",
-    "main.63fe2a96.js.map": "/react-components/static/js/main.63fe2a96.js.map"
+    "main.049de8d1.css.map": "/react-components/static/css/main.049de8d1.css.map",
+    "main.b7f47fac.js.map": "/react-components/static/js/main.b7f47fac.js.map"
   },
   "entrypoints": [
-    "static/css/main.4bc0333b.css",
-    "static/js/main.63fe2a96.js"
+    "static/css/main.049de8d1.css",
+    "static/js/main.b7f47fac.js"
   ]
 }
