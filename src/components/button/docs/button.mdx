@@ -1,17 +1,18 @@
-import { ReactComponent as ArrowLeftIcon } from "assets/icons/arrow/arrow-left.svg";
-import { ReactComponent as UploadIcon } from "assets/icons/cloud/cloud-upload.svg";
-import { ReactComponent as TrashIcon } from "assets/icons/trash/trash-2.svg";
-import { ReactComponent as CubeIcon } from "assets/icons/cube.svg";
 import { Link } from "react-router-dom";
-import Spinner from 'react-bootstrap/Spinner';
-import { exclueValuesFromListOrObject } from "helper/excludeValuesFromListOrObject";
-import Button, {variants, RButton} from "components/button/Button";
-import ButtonPlayground from "./ButtonPlayground.jsx"
 
+import { ReactComponent as CubeIcon } from "assets/icons/cube.svg";
+import { ReactComponent as TrashIcon } from "assets/icons/trash/trash-2.svg";
+import { ReactComponent as UploadIcon } from "assets/icons/cloud/cloud-upload.svg";
+import { ReactComponent as ArrowLeftIcon } from "assets/icons/arrow/arrow-left.svg";
+import { exclueValuesFromListOrObject } from "helper/excludeValuesFromListOrObject";
+
+import Button, { variants } from "components/button/Button";
+import ButtonPlayground from "components/button/docs/ButtonPlayground.jsx";
 
 # <Back to="/">Buttons</Back>
 
 #### Contents
+
 - [Simple Button](inline:button#button)
 - [Variants](inline:button#variants)
 - [Outline Buttons](inline:button#outline)
@@ -25,6 +26,7 @@ import ButtonPlayground from "./ButtonPlayground.jsx"
   - [Custom Loader](inline:button#customLoader)
 - [Playground](inline:button#playground)
 - [API](inline:button#api)
+
 ---
 
 <article id='button'>
@@ -41,8 +43,8 @@ const ButtonExample = () => {
   return <Button onClick={() => alert("Button Clicked!")}>Contained</Button>;
 };
 ```
-</article>
 
+</article>
 
 ---
 
@@ -70,10 +72,7 @@ const variants = {
 
 <Preview>
   {Object.entries(variants)?.map(([variant, label]) => (
-    <Button
-      variant={variant}
-      onClick={() => alert(`${label} Button Clicked!`)}
-    >
+    <Button variant={variant} onClick={() => alert(`${label} Button Clicked!`)}>
       {label}
     </Button>
   ))}
@@ -86,16 +85,13 @@ const VariantsTypeExample = () => {
   return (
     <>
       {Object.entries(variants)?.map(([variant, label]) => (
-        <Button
-          variant={variant}
-        >
-          {label}
-        </Button>
+        <Button variant={variant}>{label}</Button>
       ))}
     </>
   );
 };
 ```
+
 </article>
 
 ---
@@ -108,27 +104,23 @@ Pass `outline` prop to the `<Button />`
 > Note: Button with `outline` takes `variant='primary'` by default.
 
 <Preview>
-  {Object.entries(exclueValuesFromListOrObject(variants, ['text', 'link']))?.map(([variant, label]) => (
-    <Button
-      variant={`outline-${variant}`}
-    >
-      {label}
-    </Button>
+  {Object.entries(
+    exclueValuesFromListOrObject(variants, ["text", "link"])
+  )?.map(([variant, label]) => (
+    <Button variant={`outline-${variant}`}>{label}</Button>
   ))}
 </Preview>
 
 ```js
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 
 function OutlineTypesExample() {
   return (
     <>
-      {Object.entries(exclueValuesFromListOrObject(variants, ['text', 'link']))?.map(([variant, label]) => (
-        <Button
-          variant={`outline-${variant}`}
-        >
-          {label}
-        </Button>
+      {Object.entries(
+        exclueValuesFromListOrObject(variants, ["text", "link"])
+      )?.map(([variant, label]) => (
+        <Button variant={`outline-${variant}`}>{label}</Button>
       ))}
     </>
   );
@@ -136,11 +128,10 @@ function OutlineTypesExample() {
 
 export default OutlineTypesExample;
 ```
+
 </article>
 
-
 ---
-
 
 <article id='sizes'>
 ### Sizes
@@ -158,27 +149,26 @@ Sizes = `'sm'` | `'md'` | `'lg'`
 <Button size="md">Small button</Button>
 <Button size="lg">Large button</Button>
 ```
+
 </article>
 
 ---
 
-
-
 <article id='icons'>
 ### Icons
 
-The `startIcon` and `endIcon` props helps to insert your icons inside the `<Button/>` 
+The `startIcon` and `endIcon` props helps to insert your icons inside the `<Button/>`
 
 <Preview>
-<Button startIcon={<TrashIcon />}>Delete</Button>
-<Button endIcon={<UploadIcon />}>Upload</Button>
+  <Button startIcon={<TrashIcon />}>Delete</Button>
+  <Button endIcon={<UploadIcon />}>Upload</Button>
 </Preview>
 
 ```js
 import Button from "components/button/Button";
 
-import {ReactComponent as TrashIcon} from "your-assets/trash.svg";
-import {ReactComponent as UploadIcon} from "your-assets/upload.svg";
+import { ReactComponent as TrashIcon } from "your-assets/trash.svg";
+import { ReactComponent as UploadIcon } from "your-assets/upload.svg";
 
 const ButtonIconsExample = () => {
   return (
@@ -186,21 +176,21 @@ const ButtonIconsExample = () => {
       <Button startIcon={<TrashIcon />}>Delete</Button>
       <Button endIcon={<UploadIcon />}>Upload</Button>
     </>
-  )
-}
+  );
+};
 ```
 
-> Note: You can also pass `Icons` as children to the `Button` like this 
+> Note: You can also pass `Icons` as children to the `Button` like this
 
 ```js
 <Button>
-    <UploadIcon /> Upload 
+  <UploadIcon /> Upload
 </Button>
 ```
+
 </article>
 
 ---
-
 
 <article id='disabled'>
 ### Disabled
@@ -232,10 +222,10 @@ const DisabledButtonsExample = () => {
   );
 };
 ```
+
 </article>
 
 ---
-
 
 <article id='loading'>
 ### Loading State
@@ -267,10 +257,8 @@ const ButtonLoadingExample = () => {
   );
 };
 ```
+
 </article>
-
-
-
 
 <article id="loaderPosition">
 ### Loader Position
@@ -280,16 +268,16 @@ The loading icon can be placed at the `start` | `end` position using the `loader
 > Note: By default `loaderPosition` `=` `'start'`.
 
 <Preview>
-<Button isLoading loaderPosition='start'>Save</Button>
-<Button isLoading loaderPosition='end'>Save</Button>
+  <Button isLoading loaderPosition="start">Save</Button>
+  <Button isLoading loaderPosition="end">Save</Button>
 </Preview>
 
 ```js
 <Button isLoading loaderPosition='start'>Save</Button>
 <Button isLoading loaderPosition='end'>Save</Button>
 ```
-</article>
 
+</article>
 
 <article id='loaderAnimation'>
 ### Loader Animation
@@ -301,16 +289,16 @@ Supports: `'border'` | `'grow'`
 > Note: By default `loaderPosition` `=` `'border'`.
 
 <Preview>
-<Button isLoading loaderAnimation='border'>Border</Button>
-<Button isLoading loaderAnimation='grow'>Grow</Button>
+  <Button isLoading loaderAnimation="border">Border</Button>
+  <Button isLoading loaderAnimation="grow">Grow</Button>
 </Preview>
 
 ```js
 <Button isLoading loaderAnimation='border'>Border</Button>
 <Button isLoading loaderAnimation='grow'>Grow</Button>
 ```
-</article>
 
+</article>
 
 <article id='loadingIndicator'>
 ### Loading Indicator
@@ -318,14 +306,18 @@ Supports: `'border'` | `'grow'`
 The `loadingIndicator` allow you to replace the button children while loading.
 
 <Preview>
-<Button isLoading loadingIndicator='Loading...'>Button</Button>
+  <Button isLoading loadingIndicator="Loading...">
+    Button
+  </Button>
 </Preview>
 
 ```js
-<Button isLoading loadingIndicator='Loading...'>Button</Button>
+<Button isLoading loadingIndicator="Loading...">
+  Button
+</Button>
 ```
-</article>
 
+</article>
 
 <article id='isLoader'>
 ### Hide Default Loader
@@ -333,47 +325,43 @@ The `loadingIndicator` allow you to replace the button children while loading.
 The `isLoader` prop allows to toggle the visibility of the default loader or the custom loader provided via `loader`
 
 <Preview>
-<Button isLoading>Default</Button>
-<Button isLoading isLoader={false}>! isLoader</Button>
+  <Button isLoading>Default</Button>
+  <Button isLoading isLoader={false}>! isLoader</Button>
 </Preview>
 
-
 ```js
-<Button isLoading isLoader={false}>Button</Button>
+<Button isLoading isLoader={false}>
+  Button
+</Button>
 ```
 
-
 </article>
-
 
 <article id='customLoader'>
 ### Custom Loader
 
-The loading icon can be  replaced with `loader` prop.
+The loading icon can be replaced with `loader` prop.
 
 <Preview>
-<Button isLoading loader={<CubeIcon animation='grow' size='sm' />}> Loading</Button>
+  <Button isLoading loader={<CubeIcon animation="grow" size="sm" />}>Loading</Button>
 </Preview>
 
 ```js
 import Button from "components/button/Button";
-import {ReactComponent as Loader} from 'your-assets/loader.svg';
+import { ReactComponent as Loader } from "your-assets/loader.svg";
 
 const CustomLoaderExample = () => {
   return (
-    <Button 
-      isLoading
-      loader={<Loader />}
-    >
+    <Button isLoading loader={<Loader />}>
       Loading
     </Button>
-  )
-}
+  );
+};
 ```
+
 </article>
 
 ---
-
 
 <article id='playground'>
 
@@ -383,10 +371,7 @@ const CustomLoaderExample = () => {
 
 </article>
 
-
 ---
-
-
 
 <article id='api'>
 
@@ -398,23 +383,22 @@ const CustomLoaderExample = () => {
 import Button from "components/button/Button";
 ```
 
-| Name               | Type               | Default   | Description |
-|--------------------|--------------------|-----------|-------------|
-| variant | string | `'primary'` | One or more button variant combinations buttons may be one of a variety of visual variants such as: <br /> `'primary', 'secondary', 'outline'` |
-| isDisabled | bool | `false` | 
-| as | elementType |  | You can use a custom element type for this component.
-| size | string | `sm`, `lg` | Specifies a large or small button.
-| href | 
-| value | string | 
+| Name       | Type        | Default     | Description                                                                                                                                    |
+| ---------- | ----------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| variant    | string      | `'primary'` | One or more button variant combinations buttons may be one of a variety of visual variants such as: <br /> `'primary', 'secondary', 'outline'` |
+| isDisabled | bool        | `false`     |
+| as         | elementType |             | You can use a custom element type for this component.                                                                                          |
+| size       | string      | `sm`, `lg`  | Specifies a large or small button.                                                                                                             |
+| href       |
+| value      | string      |
 | loader
 | endIcon
 | startIcon
-| className | string | 
+| className | string |
 | isLoader | bool | `false` | Specifies whether to show the loading spinner or not.
-| loadingIndicator | | Specifies the loading text 
+| loadingIndicator | | Specifies the loading text
 | isLoading | bool | `false` | Specifies whether to show the loading state or not.
 | loaderPosition | string | `'start'` | Specifies the position of loader. Accepts `'start'`, `'end'`
 | isDisabled | bool | `false` | Disables the Button, preventing mouse events.
-
 
 </article>

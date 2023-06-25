@@ -4,7 +4,7 @@ import { useRoutes } from "react-router-dom";
 import MarkDown from "components/markdown/MarkDown";
 
 import Components from "components/components.mdx";
-import Button from "components/button/button.mdx";
+import Button from "components/button/docs/button.mdx";
 
 const AppD = () => {
   let element = useRoutes([

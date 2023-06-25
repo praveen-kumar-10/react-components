@@ -1,6 +1,7 @@
 import { useRef, useMemo } from "react";
 
 import "./Button.scss";
+import Ripple from "components/ripple/Ripple";
 
 // todo: Add Tooltip
 // todo: Add Different custom Loader Animation or use 'react-spinners'
@@ -19,6 +20,30 @@ export const variants = {
   link: "Link",
 };
 
+/**
+ * @param {
+ * size = 'sm' | 'md' | 'lg'
+ * icon = {
+ *    position: "start"
+ * }
+ * isLoading: false
+ * loading: {
+ *    size: 'sm'|'lg',
+ *    animation: "border" | "grow",
+ *    indicator: "Custom Loading Text",
+ *    position: "start" | "end",
+ *    loader: Element,
+ *    isLoader: true,
+ * }
+ * ripple: {
+ *    color: "#fff",
+ *    duration: 1000,
+ * }
+ * isDisabled
+ * onClick
+ * } props
+ */
+
 const Button = (props) => {
   let ref = useRef();
   let {
@@ -36,6 +61,9 @@ const Button = (props) => {
     loaderSize,
     loadingIndicator,
     loaderPosition = "start",
+
+    rippleColor,
+    rippleAnimationDuration,
 
     // todo: if useButton is used then remove isDisabled and buttonProps
     isDisabled,
@@ -104,6 +132,8 @@ const Button = (props) => {
           }}
         />
       )}
+
+      <Ripple {...props?.ripple} />
     </button>
   );
 };
@@ -120,8 +150,4 @@ const Spinner = ({ loader, animation = "border", size = "sm" }) => {
       <span className="visually-hidden">Loading...</span>
     </div>
   );
-};
-
-export const RButton = () => {
-  return <button className="rbutton">Hello</button>;
 };

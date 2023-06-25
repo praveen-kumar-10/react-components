@@ -4,7 +4,7 @@ import { Item, Section, useListData } from "react-stately";
 import { ReactComponent as Icon } from "assets/icons/menu/more-vertical.svg";
 
 import Button from "components/button/Button";
-import ToggleButton from "components/button/ToggleButton";
+// import ToggleButton from "components/button/ToggleButton";
 
 import Select from "components/select/Select";
 import SearchSelect from "components/select/SearchSelect";
@@ -54,7 +54,7 @@ const App = () => {
 
       <br />
 
-      <ToggleButton isToggle={true}>Toggle</ToggleButton>
+      {/* <ToggleButton isToggle={true}>Toggle</ToggleButton> */}
 
       <br />
 
